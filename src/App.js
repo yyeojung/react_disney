@@ -1,13 +1,21 @@
 import styled from 'styled-components';
 import './App.css';
+import requests from './api/request';
 import Nav from './components/Nav';
 import Banner from './components/Banner';
+import Category from './components/Category';
+import Row from './components/Row';
 
 function App() {
   return (
     <Container>
         <Nav/>
         <Banner/>
+        <Category/>
+        <Row id="TN" title="Trending Now" fetchUrl={requests.fetchTrending}/>
+        <Row id="TR" title="Top Rated" fetchUrl={requests.fetchTopRated}/>
+        <Row id="AM" title="Action Movies" fetchUrl={requests.fetchActionMovies}/>
+        <Row id="CM" title="Comedy Movies" fetchUrl={requests.fetchComedyMovies}/>
     </Container>
   );
 }

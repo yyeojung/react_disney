@@ -39,6 +39,7 @@ const NavWrap = styled.nav`
     top: 0;
     left: 0;
     height: 70px;
+    width: 100%;
     background-color: ${props => props.$show ? "#090b13" : "transparent"};
     display: flex;
     justify-content: space-between;
