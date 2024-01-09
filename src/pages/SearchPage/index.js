@@ -32,7 +32,6 @@ const SearchPage = () => {
             console.log(error)
         }
     }
-
     if(searchResult.length > 0) {
         return (
           <SearchMovie>

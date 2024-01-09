@@ -20,7 +20,7 @@ const MovieModal = (props) => {
                 </span>
                 <img 
                     className='modal_poster_img'
-                    src={`https://image.tmdb.org/t/p/original/${props.backdrop_path}`} 
+                    src={`https://image.tmdb.org/t/p/original${props.backdrop_path}`} 
                     alt={`${props.title}`}
                 />
                 <ModalContent>

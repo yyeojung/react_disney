@@ -15,10 +15,14 @@ const Banner = () => {
     const fetchData = async() => {
         //현재 상영중인 영화 정보 가져오기(여러 영화)
         const response = await axios.get(requests.fetchNowPlaying);
-        
+
+        //배경과 설명이 있는 영화만 필터링
+        const moviesWithData = response.data.results.filter(
+            movie => movie.backdrop_path !== null && movie.overview !== ''
+        )
         //여러 영화 중 영화 하나의 id 가져오기
-        const movieId = response.data.results[
-            Math.floor(Math.random() * response.data.results.length)
+        const movieId = moviesWithData[
+            Math.floor(Math.random() * moviesWithData.length)
         ].id
         //특정 영화의 더 상세한 정보 가져오기(비디오 정보도 포함)
         const {data: movieDetail} = await axios.get(`movie/${movieId}`, {
@@ -31,7 +35,6 @@ const Banner = () => {
     const truncate = (str, n) => {
         return str?.length > n ? str.substring(0, n) + "..." : str;
     }
-    
     if(isClick) {
         return (
             <>
@@ -52,7 +55,7 @@ const Banner = () => {
         return (
             <BannerHeader
                 style={{
-                    backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie.backdrop_path}")`,
+                    backgroundImage: `url("https://image.tmdb.org/t/p/original${movie.backdrop_path}")`,
                     backgroundPosition: "top center",
                     backgroundSize: "cover"
                 }}
